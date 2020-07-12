@@ -17,7 +17,7 @@ def init_browser():
     browser = Browser('chrome', **executable_path, headless=False)
 
 #%% Define scraper and dictionary
-def scrape():
+def scrape_all():
     
     mars_scraper = {}
     

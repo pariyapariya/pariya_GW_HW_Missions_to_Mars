@@ -11,12 +11,10 @@ mongo = PyMongo(app)
 # Or set inline
 # mongo = PyMongo(app, uri="mongodb://localhost:27017/craigslist_app")
 
-
 @app.route("/")
 def index():
     mars = mongo.db.mars.find_one()
     return render_template("index.html", mars=mars)
-
 
 @app.route("/scrape")
 def scraper():
@@ -24,7 +22,6 @@ def scraper():
     mars_data = scrape_mars.scrape_all()
     mars.update({}, mars_data, upsert=True)
     return render_template("index.html", mars=mars)
-
 
 if __name__ == "__main__":
     app.run(debug=True)
